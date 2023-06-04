@@ -2,9 +2,10 @@
 
 from openpyxl import Workbook
 from openpyxl import load_workbook
+from termcolor import colored
 
 def saveandproceed():
-    print("La saisie a été enregistré dans le fichier my_comptability_sheet.xlsx.")
+    print(colored("La saisie a été enregistré dans le fichier my_comptability_sheet.xlsx.", 'green'))
     answer = input("Voulez-vous saisir un autre mois (o/N) ?: ")
     if answer == "O":
         menu()
@@ -99,7 +100,7 @@ def menu():
         print("Fermeture du programme.")
         exit(0)
     else:
-        print("Veuillez sélectionnez une option présente dans la liste")
+        print(colored("Veuillez sélectionnez une option présente dans la liste !", 'yellow'))
         menu()
 
 def main():
