@@ -5,7 +5,7 @@ from openpyxl import load_workbook
 from termcolor import colored
 
 def depensefixe():
-    global depenses
+    global depensesfixes
     telephone = input("Combien coûte votre abonnement téléphonique ce mois-ci ?: ")
     internet = input("Combien coûte votre abonnement internet ce mois-ci ?: ")
     loyer = input("Combien coûte votre loyer ce mois-ci ?: ")
@@ -33,7 +33,7 @@ def epargne():
     investissement()
 
 def revenu():
-    global revenus
+    global revenues
     salaire = input("Quelle est la somme de votre salaire ce mois-ci ?: ")
     prime = input("Quelle a été la somme de votre prime ce mois-ci ?: ")
     locations = input("Quelle est la somme de vos revenus de location ce mois-ci ?: ")
@@ -183,7 +183,7 @@ def menu():
 def main():
     global wb
     global sheet
-    annee = input(colored("En quelle année sommes-nous ? \n", 'blue'))
+    annee = input(colored("En quelle année sommes-nous ? ", 'blue'))
     wb = load_workbook("my_comptability_sheet.xlsx")
     sheet = wb[f'{annee}']
     revenu()
