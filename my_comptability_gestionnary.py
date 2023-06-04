@@ -183,7 +183,7 @@ def menu():
 def main():
     global wb
     global sheet
-    annee = input("En quelle année sommes-nous ? ")
+    annee = input(colored("En quelle année sommes-nous ? \n", 'blue'))
     wb = load_workbook("my_comptability_sheet.xlsx")
     sheet = wb[f'{annee}']
     revenu()
