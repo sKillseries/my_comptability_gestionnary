@@ -100,13 +100,13 @@ def menu():
     if choix == "1":
         sheet.cell(row=5, column=3).value = revenues
         sheet.cell(row=5, column=4).value = depensesfixes
-        sheet.cell(row=7, column=5).value = depensesvariables
+        sheet.cell(row=5, column=5).value = depensesvariables
         wb.save("my_comptability_sheet.xlsx")
         saveandproceed()
     elif choix == "2":
         sheet.cell(row=6, column=3).value = revenues
         sheet.cell(row=6, column=4).value = depensesfixes
-        sheet.cell(row=7, column=5).value = depensesvariables
+        sheet.cell(row=6, column=5).value = depensesvariables
         wb.save("my_comptability_sheet.xlsx")
         saveandproceed()
     elif choix == "3":
