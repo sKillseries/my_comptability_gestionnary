@@ -20,7 +20,7 @@ def depensevariable():
     autre = input("Montant autre dépense ?: ")
     depvar = float(retrait) + float(coiffeur) + float(vetement) + float(alimentation) + float(cosmetique) + float(loisir) + float(autre)
     depensesvariables = round(depvar, 2)
-    print(colored(f"Vos dépenses variables s'élèvent à {depensesvariables}€ ce mois-ci. \n", 'yellow'))
+    print(colored(f"Vos dépenses variables s'élèvent à {depensesvariables}€ ce mois-ci.", 'yellow'))
     menu()
 
 def depensefixe():
@@ -41,7 +41,7 @@ def depensefixe():
     eau = input("Quelle est la somme de votre facture d'eau ce mois-ci ?:")
     depfixe = float(epargne) + float(investissement) + float(telephone) + float(internet) + float(loyer) + float(transport) + float(auto) + float(electricite) + float(eau)
     depensesfixes = round(depfixe, 2)
-    print(colored(f"Vos dépenses fixes s'élèvent à {depensesfixes}€ ce mois-ci. \n", 'yellow'))
+    print(colored(f"Vos dépenses fixes s'élèvent à {depensesfixes}€ ce mois-ci.", 'yellow'))
     depensevariable()
 
 def revenu():
@@ -59,7 +59,7 @@ def revenu():
     redevances = input("Quelle est la somme de vos redevances ce mois-ci ?: ")
     revenus = float(salaire) + float(locations) + float(dividendes) + float(interets) + float(redevances)
     revenues = round(revenus, 2)
-    print(colored(f"Vos revenus ce mois-ci s'élève à {revenues}€. \n", 'green'))
+    print(colored(f"Vos revenus ce mois-ci s'élève à {revenues}€.", 'green'))
     depensefixe()
 
 def saveandproceed():
