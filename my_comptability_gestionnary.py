@@ -6,6 +6,11 @@ from termcolor import colored
 
 def depensevariable():
     global depensesvariables
+    print(colored("""
+    ###############################
+    Saisie des revenus:
+    ###############################
+    """, 'magenta'))
     retrait = input("Combien d'argent avez-vous retiré au guichet ce mois-ci ?: ")
     coiffeur = input("Combien a coûté le coiffeur ?: ")
     vetement = input("combien avez-vous dépensé en vêtements ce mois-ci ?: ")
@@ -20,6 +25,11 @@ def depensevariable():
 
 def depensefixe():
     global depensesfixes
+    print(colored("""
+    ###############################
+    Saisie des dépenses fixes:
+    ###############################
+    """, 'magenta'))
     epargne = input("Combien avez-vous épargné ce mois-ci ?: ")
     investissement = input("Combien avez-vous investi ce mois-ci ?: ")
     telephone = input("Combien coûte votre abonnement téléphonique ce mois-ci ?: ")
@@ -36,6 +46,11 @@ def depensefixe():
 
 def revenu():
     global revenues
+    print(colored("""
+    ###############################
+    Saisie des dépenses variables:
+    ###############################
+    """, 'magenta'))
     salaire = input("Quelle est la somme de votre salaire ce mois-ci ?: ")
     prime = input("Quelle a été la somme de votre prime ce mois-ci ?: ")
     locations = input("Quelle est la somme de vos revenus de location ce mois-ci ?: ")
@@ -50,13 +65,15 @@ def revenu():
 def saveandproceed():
     reste = float(revenues) - float(depensesfixes) - float(depensesvariables)
     restes = round(reste, 2)
-    print(f"""
-    Bilan:
+    print(colored(f"""
+    ###############################
+    Bilan comptable de la saisie:
+    ###############################
     Revenus: {revenues}€
     Dépenses fixes: {depensesfixes}€
     Dépenses variables: {depensesvariables}€
     Restes:  {restes}€
-    """)
+    """, 'cyan'))
     print(colored("La saisie a été enregistré dans le fichier my_comptability_sheet.xlsx.", 'green'))
     answer = input("Voulez-vous saisir un autre mois (o/N) ?: ")
     if answer == "O":
