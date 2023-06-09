@@ -7,9 +7,9 @@ from termcolor import colored
 def depensevariable():
     global depensesvariables
     print(colored("""
-    ###############################
+###########################
     Saisie des revenus:
-    ###############################
+###########################
     """, 'magenta'))
     retrait = input("Combien d'argent avez-vous retiré au guichet ce mois-ci ?: ")
     coiffeur = input("Combien a coûté le coiffeur ?: ")
@@ -26,9 +26,9 @@ def depensevariable():
 def depensefixe():
     global depensesfixes
     print(colored("""
-    ###############################
+##################################
     Saisie des dépenses fixes:
-    ###############################
+##################################
     """, 'magenta'))
     epargne = input("Combien avez-vous épargné ce mois-ci ?: ")
     investissement = input("Combien avez-vous investi ce mois-ci ?: ")
@@ -47,9 +47,9 @@ def depensefixe():
 def revenu():
     global revenues
     print(colored("""
-    ###############################
+######################################
     Saisie des dépenses variables:
-    ###############################
+######################################
     """, 'magenta'))
     salaire = input("Quelle est la somme de votre salaire ce mois-ci ?: ")
     prime = input("Quelle a été la somme de votre prime ce mois-ci ?: ")
@@ -66,13 +66,13 @@ def saveandproceed():
     reste = float(revenues) - float(depensesfixes) - float(depensesvariables)
     restes = round(reste, 2)
     print(colored(f"""
-    ###############################
+#####################################
     Bilan comptable de la saisie:
-    ###############################
-    Revenus: {revenues}€
-    Dépenses fixes: {depensesfixes}€
-    Dépenses variables: {depensesvariables}€
-    Restes:  {restes}€
+#####################################
+Revenus: {revenues}€
+Dépenses fixes: {depensesfixes}€
+Dépenses variables: {depensesvariables}€
+Restes:  {restes}€
     """, 'cyan'))
     print(colored("La saisie a été enregistré dans le fichier my_comptability_sheet.xlsx.", 'green'))
     answer = input("Voulez-vous saisir un autre mois (o/N) ?: ")
@@ -97,20 +97,20 @@ def saveandproceed():
 def menu():
     print(
     """
-    Quel mois voulez-vous enregistrer la saisie ?
-    > 1 : Janvier
-    > 2 : Février
-    > 3 : Mars
-    > 4 : Avril
-    > 5 : Mai
-    > 6 : Juin
-    > 7 : Juillet
-    > 8 : Août
-    > 9 : Septembre
-    > 10: Octobre
-    > 11: Novembre
-    > 12: Décembre
-    > q : Quitter
+Quel mois voulez-vous enregistrer la saisie ?
+> 1 : Janvier
+> 2 : Février
+> 3 : Mars
+> 4 : Avril
+> 5 : Mai
+> 6 : Juin
+> 7 : Juillet
+> 8 : Août
+> 9 : Septembre
+> 10: Octobre
+> 11: Novembre
+> 12: Décembre
+> q : Quitter
     """
     )
     choix = input("Veuillez sélectionnez le numéro du mois: ")
