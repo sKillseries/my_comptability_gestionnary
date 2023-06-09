@@ -97,6 +97,10 @@ Restes:  {restes}€
 def menu():
     print(
     """
+##############################
+    Enregistrement saisie:
+##############################
+
 Quel mois voulez-vous enregistrer la saisie ?
 > 1 : Janvier
 > 2 : Février
