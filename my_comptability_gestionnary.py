@@ -1,94 +1,77 @@
 #!/usr/bin/python3
 
-from openpyxl import Workbook
-from openpyxl import load_workbook
+from openpyxl import Workbook, load_workbook
 from termcolor import colored
 
-def depensevariable():
-    global depensesvariables
+def get_user_input(message):
+    return input(message).strip()
+
+def calculate_expenses_variables():
     print(colored("""
 ###########################
-    Saisie des revenus:
+    Saisie des dépenses variables :
 ###########################
     """, 'magenta'))
-    retrait = input("Combien d'argent avez-vous retiré au guichet ce mois-ci ?: ")
-    coiffeur = input("Combien a coûté le coiffeur ?: ")
-    vetement = input("combien avez-vous dépensé en vêtements ce mois-ci ?: ")
-    alimentation = input("A combien s'élève le montant de vos courses ce mois-ci ?: ")
-    cosmetique = input("Combien avez-vous dépensé en cosmétique ?: ")
-    loisir = input("Combien as-tu dépensé en loisir ?: ")
-    autre = input("Montant autre dépense ?: ")
-    depvar = float(retrait) + float(coiffeur) + float(vetement) + float(alimentation) + float(cosmetique) + float(loisir) + float(autre)
-    depensesvariables = round(depvar, 2)
-    print(colored(f"Vos dépenses variables s'élèvent à {depensesvariables}€ ce mois-ci.", 'yellow'))
-    menu()
+    retrait = float(get_user_input("Combien d'argent avez-vous retiré au guichet ce mois-ci ? : "))
+    coiffeur = float(get_user_input("Combien a coûté le coiffeur ? : "))
+    vetement = float(get_user_input("Combien avez-vous dépensé en vêtements ce mois-ci ? : "))
+    alimentation = float(get_user_input("A combien s'élève le montant de vos courses ce mois-ci ? : "))
+    cosmetique = float(get_user_input("Combien avez-vous dépensé en cosmétique ? : "))
+    loisir = float(get_user_input("Combien as-tu dépensé en loisir ? : "))
+    autre = float(get_user_input("Montant autre dépense ? : "))
+    depenses_variables = round(retrait + coiffeur + vetement + alimentation + cosmetique + loisir + autre, 2)
+    print(colored(f"Vos dépenses variables s'élèvent à {depenses_variables}€ ce mois-ci.", 'yellow'))
+    return depenses_variables
 
-def depensefixe():
-    global depensesfixes
+def calculate_expenses_fixes():
     print(colored("""
 ##################################
-    Saisie des dépenses fixes:
+    Saisie des dépenses fixes :
 ##################################
     """, 'magenta'))
-    epargne = input("Combien avez-vous épargné ce mois-ci ?: ")
-    investissement = input("Combien avez-vous investi ce mois-ci ?: ")
-    telephone = input("Combien coûte votre abonnement téléphonique ce mois-ci ?: ")
-    internet = input("Combien coûte votre abonnement internet ce mois-ci ?: ")
-    loyer = input("Combien coûte votre loyer ce mois-ci ?: ")
-    transport = input("Combien coûte votre abonnement de transport ce mois-ci ?: ")
-    auto = input("Combien coûte votre traite auto ce mois-ci ?: ")
-    electricite = input("Quelle est la somme de votre facture d'électricité ce mois-ci ?: ")
-    eau = input("Quelle est la somme de votre facture d'eau ce mois-ci ?:")
-    depfixe = float(epargne) + float(investissement) + float(telephone) + float(internet) + float(loyer) + float(transport) + float(auto) + float(electricite) + float(eau)
-    depensesfixes = round(depfixe, 2)
-    print(colored(f"Vos dépenses fixes s'élèvent à {depensesfixes}€ ce mois-ci.", 'yellow'))
-    depensevariable()
+    epargne = float(get_user_input("Combien avez-vous épargné ce mois-ci ? : "))
+    investissement = float(get_user_input("Combien avez-vous investi ce mois-ci ? : "))
+    telephone = float(get_user_input("Combien coûte votre abonnement téléphonique ce mois-ci ? : "))
+    internet = float(get_user_input("Combien coûte votre abonnement internet ce mois-ci ? : "))
+    loyer = float(get_user_input("Combien coûte votre loyer ce mois-ci ? : "))
+    transport = float(get_user_input("Combien coûte votre abonnement de transport ce mois-ci ? : "))
+    auto = float(get_user_input("Combien coûte votre traite auto ce mois-ci ? : "))
+    electricite = float(get_user_input("Quelle est la somme de votre facture d'électricité ce mois-ci ? : "))
+    eau = float(get_user_input("Quelle est la somme de votre facture d'eau ce mois-ci ? : "))
+    depenses_fixes = round(epargne + investissement + telephone + internet + loyer + transport + auto + electricite + eau, 2)
+    print(colored(f"Vos dépenses fixes s'élèvent à {depenses_fixes}€ ce mois-ci.", 'yellow'))
+    return depenses_fixes
 
-def revenu():
-    global revenues
+def calculate_revenues():
     print(colored("""
 ######################################
-    Saisie des dépenses variables:
+    Saisie des revenus :
 ######################################
     """, 'magenta'))
-    salaire = input("Quelle est la somme de votre salaire ce mois-ci ?: ")
-    prime = input("Quelle a été la somme de votre prime ce mois-ci ?: ")
-    locations = input("Quelle est la somme de vos revenus de location ce mois-ci ?: ")
-    dividendes = input("Quelle est la somme de vos dividendes ce mois-ci ?: ")
-    interets = input("Quelle est la somme de vos intérêts ce mois-ci ?: ")
-    redevances = input("Quelle est la somme de vos redevances ce mois-ci ?: ")
-    revenus = float(salaire) + float(locations) + float(dividendes) + float(interets) + float(redevances)
-    revenues = round(revenus, 2)
-    print(colored(f"Vos revenus ce mois-ci s'élève à {revenues}€.", 'green'))
-    depensefixe()
+    salaire = float(get_user_input("Quelle est la somme de votre salaire ce mois-ci ? : "))
+    prime = float(get_user_input("Quelle a été la somme de votre prime ce mois-ci ? : "))
+    locations = float(get_user_input("Quelle est la somme de vos revenus de location ce mois-ci ? : "))
+    dividendes = float(get_user_input("Quelle est la somme de vos dividendes ce mois-ci ? : "))
+    interets = float(get_user_input("Quelle est la somme de vos intérêts ce mois-ci ? : "))
+    redevances = float(get_user_input("Quelle est la somme de vos redevances ce mois-ci ? : "))
+    revenues = round(salaire + prime + locations + dividendes + interets + redevances, 2)
+    print(colored(f"Vos revenus ce mois-ci s'élèvent à {revenues}€.", 'green'))
+    return revenues
 
-def saveandproceed():
-    reste = float(revenues) - float(depensesfixes) - float(depensesvariables)
-    restes = round(reste, 2)
+def save_and_proceed(revenues, depenses_fixes, depenses_variables):
+    reste = round(revenues - depenses_fixes - depenses_variables, 2)
     print(colored(f"""
 #####################################
-    Bilan comptable de la saisie:
+    Bilan comptable de la saisie :
 #####################################
-Revenus: {revenues}€
-Dépenses fixes: {depensesfixes}€
-Dépenses variables: {depensesvariables}€
-Restes:  {restes}€
+Revenus : {revenues}€
+Dépenses fixes : {depenses_fixes}€
+Dépenses variables : {depenses_variables}€
+Restes : {reste}€
     """, 'cyan'))
-    print(colored("La saisie a été enregistré dans le fichier my_comptability_sheet.xlsx.", 'green'))
-    answer = input("Voulez-vous saisir un autre mois (o/N) ?: ")
-    if answer == "O":
-        menu()
-    elif answer == "N":
-        print("Fermeture du programme.")
-        exit(0)
-    elif answer == "o":
-        menu()
-    elif answer == "n":
-        print("Fermeture du programme.")
-        exit(0)
-    elif answer == "Y":
-        menu()
-    elif answer == "y":
+    print(colored("La saisie a été enregistrée dans le fichier my_comptability_sheet.xlsx.", 'green'))
+    answer = get_user_input("Voulez-vous saisir un autre mois (o/N) ? : ")
+    if answer.lower() in ["o", "y", "yes"]:
         menu()
     else:
         print("Fermeture du programme.")
@@ -96,9 +79,9 @@ Restes:  {restes}€
 
 def menu():
     print(
-    """
+        """
 ##############################
-    Enregistrement saisie:
+    Enregistrement saisie :
 ##############################
 
 Quel mois voulez-vous enregistrer la saisie ?
@@ -115,98 +98,35 @@ Quel mois voulez-vous enregistrer la saisie ?
 > 11: Novembre
 > 12: Décembre
 > q : Quitter
-    """
+        """
     )
-    choix = input("Veuillez sélectionnez le numéro du mois: ")
-    if choix == "1":
-        sheet.cell(row=5, column=3).value = revenues
-        sheet.cell(row=5, column=4).value = depensesfixes
-        sheet.cell(row=5, column=5).value = depensesvariables
-        wb.save("my_comptability_sheet.xlsx")
-        saveandproceed()
-    elif choix == "2":
-        sheet.cell(row=6, column=3).value = revenues
-        sheet.cell(row=6, column=4).value = depensesfixes
-        sheet.cell(row=6, column=5).value = depensesvariables
-        wb.save("my_comptability_sheet.xlsx")
-        saveandproceed()
-    elif choix == "3":
-        sheet.cell(row=7, column=3).value = revenues
-        sheet.cell(row=7, column=4).value = depensesfixes
-        sheet.cell(row=7, column=5).value = depensesvariables
-        wb.save("my_comptability_sheet.xlsx")
-        saveandproceed()
-    elif choix == "4":
-        sheet.cell(row=8, column=3).value = revenues
-        sheet.cell(row=8, column=4).value = depensesfixes
-        sheet.cell(row=8, column=5).value = depensesvariables
-        wb.save("my_comptability_sheet.xlsx")
-        saveandproceed()
-    elif choix == "5":
-        sheet.cell(row=9, column=3).value = revenues
-        sheet.cell(row=9, column=4).value = depensesfixes
-        sheet.cell(row=9, column=5).value = depensesvariables
-        wb.save("my_comptability_sheet.xlsx")
-        saveandproceed()
-    elif choix == "6":
-        sheet.cell(row=10, column=3).value = revenues
-        sheet.cell(row=10, column=4).value = depensesfixes
-        sheet.cell(row=10, column=5).value = depensesvariables
-        wb.save("my_comptability_sheet.xlsx")
-        saveandproceed()
-    elif choix == "7":
-        sheet.cell(row=11, column=3).value = revenues
-        sheet.cell(row=11, column=4).value = depensesfixes
-        sheet.cell(row=11, column=5).value = depensesvariables
-        wb.save("my_comptability_sheet.xlsx")
-        saveandproceed()
-    elif choix == "8":
-        sheet.cell(row=12, column=3).value = revenues
-        sheet.cell(row=12, column=4).value = depensesfixes
-        sheet.cell(row=12, column=5).value = depensesvariables
-        wb.save("my_comptability_sheet.xlsx")
-        saveandproceed()
-    elif choix == "9":
-        sheet.cell(row=13, column=3).value = revenues
-        sheet.cell(row=13, column=4).value = depensesfixes
-        sheet.cell(row=13, column=5).value = depensesvariables
-        wb.save("my_comptability_sheet.xlsx")
-        saveandproceed()
-    elif choix == "10":
-        sheet.cell(row=14, column=3).value = revenues
-        sheet.cell(row=14, column=4).value = depensesfixes
-        sheet.cell(row=14, column=5).value = depensesvariables
-        wb.save("my_comptability_sheet.xlsx")
-        saveandproceed()
-    elif choix == "11":
-        sheet.cell(row=15, column=3).value = revenues
-        sheet.cell(row=15, column=4).value = depensesfixes
-        sheet.cell(row=15, column=5).value = depensesvariables
-        wb.save("my_comptability_sheet.xlsx")
-        saveandproceed()
-    elif choix == "12":
-        sheet.cell(row=16, column=3).value = revenues
-        sheet.cell(row=16, column=4).value = depensesfixes
-        sheet.cell(row=16, column=5).value = depensesvariables
-        wb.save("my_comptability_sheet.xlsx")
-        saveandproceed()
-    elif choix == "q":
+    mois = get_user_input("Veuillez sélectionner le numéro du mois : ")
+    if mois.lower() == "q":
         print("Fermeture du programme.")
         exit(0)
-    elif choix == "Q":
-        print("Fermeture du programme.")
-        exit(0)
+    elif mois.isdigit() and 1 <= int(mois) <= 12:
+        sheet.cell(row=int(mois) + 4, column=3).value = revenues
+        sheet.cell(row=int(mois) + 4, column=4).value = depenses_fixes
+        sheet.cell(row=int(mois) + 4, column=5).value = depenses_variables
+        wb.save("my_comptability_sheet.xlsx")
+        save_and_proceed(revenues, depenses_fixes, depenses_variables)
     else:
-        print(colored("Veuillez sélectionnez une option présente dans la liste !", 'yellow'))
+        print(colored("Veuillez sélectionner une option présente dans la liste !", 'yellow'))
         menu()
 
 def main():
     global wb
     global sheet
-    annee = input(colored("En quelle année sommes-nous ? ", 'blue'))
+    annee = get_user_input(colored("En quelle année sommes-nous ? ", 'blue'))
     wb = load_workbook("my_comptability_sheet.xlsx")
     sheet = wb[f'{annee}']
-    revenu()
+    global revenues
+    global depenses_fixes
+    global depenses_variables
+    revenues = calculate_revenues()
+    depenses_fixes = calculate_expenses_fixes()
+    depenses_variables = calculate_expenses_variables()
+    menu()
 
 if __name__ == '__main__':
     main()
